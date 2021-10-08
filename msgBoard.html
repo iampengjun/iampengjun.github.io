@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>msgBoard</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: rgba(255, 0, 255, 0.2);
+      }
+      .container {
+        width: 600px;
+        margin: 0 auto;
+      }
+      .mes-board {
+        margin: 25px 0;
+        padding: 10px;
+        background-color: #dfc3f0;
+      }
+      .mes-board li {
+        padding: 0.1em;
+        list-style: none;
+      }
+      .mes-board li + li {
+        border-top: 1px dashed #170224;
+      }
+      .mes-board h4 {
+        display: inline;
+        margin-right: 8px;
+        font-weight: 400;
+        color: #000;
+      }
+      .mes-board small {
+        color: #999;
+        float: right;
+      }
+      .mes-board div {
+        text-align: justify;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-group">
+        <label for="deutsch">德语:</label>
+        <input type="text" class="form-control" id="deutsch" />
+      </div>
+      <div class="form-group">
+        <label for="deutsch">英语</label>
+        <textarea class="form-control" rows="3" id="content"></textarea>
+      </div>
+
+      <button class="btn btn-default" id="sendBtn">提交</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <span id="msg" style="color: brown"></span>
+
+      <div id="msgBoard" class="mes-board">
+        <li>
+          <h4>admin</h4>
+          <small>2021-04-22 15:34:45</small>
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis
+            sapiente distinctio nemo eos necessitatibus odio corrupti
+            exercitationem iure eum? Esse.
+          </div>
+        </li>
+      </div>
+    </div>
+
+    <script src="jquery.min.js"></script>
+    <script>
+      $("#sendBtn").click(function () {
+        var deutsch = $("#deutsch").val();
+        if (deutsch == null || deutsch.trim() == "") {
+          $("#msg").html("用户名称不能为空！");
+          return;
+        }
+        var content = $("#content").val();
+        if (content.trim() == "") {
+          $("#msg").html("请输入留言信息！");
+          return;
+        }
+
+        var msg = "<li><h4>" + deutsch + "</h4><small>" + formatDate() + "</small>";
+        msg += "<div>" + content + "</div></li>";
+
+        $("#msgBoard").prepend(msg);
+        $("#deutsch").val("");
+        $("#content").val("");
+        $("#msg").html("");
+      });
+
+      function formatDate() {
+        var date = new Date();
+        var str = date.getFullYear() + "-" + (parseInt(date.getMonth()) + 1) + "-" + date.getDate();
+        str += " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        return str;
+      }
+    </script>
+  </body>
+</html>
