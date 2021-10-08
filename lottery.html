@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lottery</title>
+    <style>
+      #ggk {
+        width: 600px;
+        height: 200px;
+        position: relative;
+      }
+      #ggk .jp {
+        width: 600px;
+        height: 200px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        text-align: center;
+        color: pink;
+        font-size: 50px;
+        line-height: 200px;
+      }
+
+      #ggk #canvas {
+        width: 600px;
+        height: 200px;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ggk">
+      <div class="jp">谢谢惠顾</div>
+      <canvas id="canvas" width="600" height="200"></canvas>
+    </div>
+
+    <script>
+      var canvas = document.querySelector("#canvas");
+      var ggkDom = document.querySelector("#ggk");
+      var jpDom = document.querySelector(".jp");
+      var ctx = canvas.getContext("2d");
+      ctx.fillStyle = "darkgray";
+      ctx.fillRect(0, 0, 600, 200);
+      ctx.font = "40px Mircrosoft Yahei";
+      ctx.fillStyle = "#fff";
+      ctx.fillText("刮刮卡", 260, 100);
+
+      var isDraw = false;
+      canvas.onmousedown = function () {
+        isDraw = true;
+        console.log(isDraw);
+      };
+      canvas.onmousemove = function (e) {
+        console.log(e);
+        if (isDraw) {
+          var x = e.pageX - ggkDom.offsetLeft;
+          var y = e.pageY - ggkDom.offsetTop;
+          ctx.globalCompositeOperation = "destination-out";
+          ctx.arc(x, y, 20, 0, 2 * Math.PI);
+          ctx.fill();
+        }
+      };
+
+      canvas.onmouseup = function () {
+        isDraw = false;
+        console.log(isDraw);
+      };
+
+      var arr = [
+        { content: "一等奖:IphoneXs", p: 0.1 },
+        { content: "二等奖:洗发香波", p: 0.2 },
+        { content: "三等奖:牙膏", p: 0.3 },
+      ];
+      var randomNum = Math.random();
+      if (randomNum < arr[0].p) {
+        jpDom.innerHTML = arr[0].content;
+      } else if (randomNum < arr[1].p + arr[0].p) {
+        jpDom.innerHTML = arr[1].content;
+      } else if (randomNum < arr[2].p + arr[1].p + arr[0].p) {
+        jpDom.innerHTML = arr[2].content;
+      }
+    </script>
+  </body>
+</html>
