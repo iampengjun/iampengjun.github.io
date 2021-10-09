@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>paintbrush</title>
+    <style>
+      body {
+        text-align: center;
+        padding-top: 20px;
+      }
+      canvas {
+        box-shadow: 0 0 10px #333;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body onload="draw()">
+    <canvas id="canvas" width="800" height="600"></canvas>
+
+    <script>
+      function draw() {
+        var canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+
+          canvas.onmousedown = function (e) {
+            var ev = e || window.event;
+            var x = ev.clientX - canvas.offsetLeft;
+            var y = ev.clientY - canvas.offsetTop;
+            ctx.strokeStyle = "lightskyblue";
+            ctx.lineWidth = 5;
+
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+
+            canvas.onmousemove = function (e) {
+              var ev = e || window.event;
+              var x = ev.clientX - canvas.offsetLeft;
+              var y = ev.clientY - canvas.offsetTop;
+              ctx.lineTo(x, y);
+              ctx.stroke();
+            };
+
+            canvas.onmouseup = function () {
+              canvas.onmousemove = "";
+            };
+          };
+        }
+      }
+    </script>
+  </body>
+</html>
