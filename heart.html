@@ -22,7 +22,38 @@
         width: 200px;
         height: 200px;
         background: #c0392b;
-        transform: rotate(45deg);
+        transform: rotate(45deg) scale(0.5);
+        animation-name: hd;
+        animation-duration: 2s;
+        opacity: 0.5;
+        animation-iteration-count: 4;
+      }
+
+      @keyframes hd {
+        15% {
+          opacity: 1;
+          transform: rotate(45deg) scale(1);
+        }
+        30% {
+          opacity: 0.5;
+          transform: rotate(45deg) scale(0.5);
+        }
+        45% {
+          opacity: 1;
+          transform: rotate(45deg) scale(1);
+        }
+        60% {
+          opacity: .5;
+          transform: rotate(45deg) scale(.5);
+        }
+        80% {
+          opacity: 1;
+          transform: rotate(45deg) scale(1);
+        }
+        to {
+          opacity: .5;
+          transform: rotate(45deg) scale(.5);
+        }
       }
       .heart::before {
         content: "";
