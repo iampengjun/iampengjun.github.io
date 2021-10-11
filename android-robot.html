@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Android-Robot</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #ccc;
+      }
+      .content {
+        width: 500px;
+        height: 500px;
+        border: 1px solid #7f8c8d;
+        margin: 50px auto;
+      }
+      .an-header {
+        position: relative;
+        width: 250px;
+        height: 125px;
+        border-radius: 125px 125px 0 0;
+        background-color: #27ae60;
+        margin: 10px auto;
+      }
+      .an-header::before,
+      .an-header::after {
+        position: absolute;
+        content: "";
+        width: 20px;
+        height: 20px;
+        bottom: 40px;
+        border-radius: 50%;
+        background-color: #fff;
+      }
+      .an-header::before {
+        left: 70px;
+      }
+      .an-header::after {
+        right: 70px;
+      }
+      .an-body {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        background-color: #27ae60;
+        margin: 0 auto;
+        border-radius: 0 0 10px 10px;
+      }
+      .an-body::before,
+      .an-body::after {
+        position: absolute;
+        content: "";
+        width: 30px;
+        height: 180px;
+        top: 20px;
+        background-color: #27ae60;
+        border-radius: 10px;
+      }
+      .an-body::before {
+        left: -40px;
+      }
+      .an-body::after {
+        right: -40px;
+      }
+      .an-footer {
+        width: 250px;
+        height: 100px;
+        position: relative;
+        margin: 0 auto;
+      }
+      .an-footer::before,
+      .an-footer::after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 90px;
+        border-radius:0 0 10px 10px;
+        top: 0;
+        background-color: #27ae60;
+      }
+      .an-footer::before {
+        left: 50px;
+      }
+      .an-footer::after {
+        right: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="an-header"></div>
+      <div class="an-body"></div>
+      <div class="an-footer"></div>
+    </div>
+  </body>
+</html>
