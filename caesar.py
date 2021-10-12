@@ -1,3 +1,7 @@
+text = input()
+n = int(input())
+
+
 def caesar(text, n):
     for x in text:
         if ord('a') <= ord(x) <= ord('z'):
@@ -14,4 +18,4 @@ def caesar(text, n):
             print(x, end='')
 
 
-caesar("Hello, world!", 5)
+caesar(text, n)
