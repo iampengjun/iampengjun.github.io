@@ -1,6 +1,7 @@
 from turtle import *
 
 setup(770,800,760,0)
+
 penup()
 setpos(-300,0)
 pendown()
