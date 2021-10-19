@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgba(149, 175, 192, .3);
+        }
+
+        .canvas {
+            display: block;
+            margin: 30px auto;
+            border: 1px solid #cccccc;
+            background-color: rgba(199, 236, 238, .5);
+        }
+    </style>
+</head>
+<body>
+<canvas class="canvas" width="700" height="700"></canvas>
+
+<script>
+    let canvas = document.querySelector('canvas');
+    let ctx = canvas.getContext('2d');
+
+    let a = 100, b = 500, x = 120, y = 500;
+
+    function drawColor() {
+        let rColor = Math.random() * 256;
+        let gColor = Math.random() * 256;
+        let bColor = Math.random() * 256;
+        return 'rgb(' + rColor + ',' + gColor + ',' + bColor + ')';
+    }
+
+    drawColor()
+    let iNum = Math.random() * 15;
+    for (let i = 0; i < iNum; i++) {
+        let jNum = Math.random() * 15;
+        for (let j = 0; j < jNum; j++) {
+            let color = drawColor();
+
+            function drawLine(a, b, x, y, color) {
+                drawColor();
+                ctx.beginPath()
+                ctx.moveTo(a + i * 35, b - j * 20);
+                ctx.lineTo(x + i * 35, y - j * 20);
+                ctx.strokeStyle = color || 'white';
+                ctx.lineWidth = 5;
+                ctx.stroke();
+                ctx.closePath()
+            }
+
+            drawLine(a, b, x, y, color);
+        }
+    }
+</script>
+</body>
+</html>
