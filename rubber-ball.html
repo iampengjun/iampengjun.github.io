@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgba(149, 175, 192, .3);
+        }
+
+        .canvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid #cccccc;
+            background-color: rgba(199, 236, 238, .5);
+        }
+    </style>
+</head>
+<body>
+<canvas class="canvas" width="500" height="500"></canvas>
+
+<script>
+    let canvas = document.querySelector('canvas');
+    let ctx = canvas.getContext('2d');
+    let x = 20, y = 20, r = 20;
+    let w = h = 500;
+    let xSpeed = 3 * Math.random();
+    let ySpeed = 5 * Math.random();
+    ctx.fillStyle = 'skyblue';
+
+    function drawCircle(x, y, r) {
+        ctx.beginPath()
+        ctx.arc(x, y, r, 0, Math.PI * 2, true)
+        ctx.fill()
+    }
+
+    setInterval(function () {
+        let rColor = Math.random() * 256;
+        let gColor = Math.random() * 256;
+        let bColor = Math.random() * 256;
+        ctx.clearRect(0, 0, w, h);
+        drawCircle(x, y, r)
+        x += xSpeed;
+        y += ySpeed;
+        if (x - r < 0 || x + r > w) {
+            xSpeed = -xSpeed;
+            ctx.fillStyle = 'rgb(' + rColor + ',' + gColor + ',' + bColor + ')';
+        }
+        if (y - r < 0 || y + r > h) {
+            ySpeed = -ySpeed;
+            ctx.fillStyle = 'rgb(' + rColor + ',' + gColor + ',' + bColor + ')';
+        }
+    }, 10);
+</script>
+</body>
+</html>
