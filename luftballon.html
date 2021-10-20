@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>grass</title>
+    <style>
+      canvas {
+        border: 1px dotted skyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script>
+      let canvas = document.getElementById("canvas");
+      let ctx = canvas.getContext("2d");
+
+      function drawBalloon() {
+        ctx.fillStyle = "#E3170D";
+        ctx.fillRect(100, 190, 70, 10);
+        ctx.fillStyle = "#FA8072";
+        ctx.fillRect(100, 200, 70, 40);
+        ctx.fill();
+
+        ctx.strokeStyle = "#D62828";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(115, 190);
+        ctx.lineTo(115, 160);
+        ctx.moveTo(155, 190);
+        ctx.lineTo(155, 160);
+        ctx.stroke();
+
+        ctx.fillStyle = "#FFE384";
+        ctx.beginPath();
+        ctx.moveTo(110, 170);
+        ctx.quadraticCurveTo(30, 90, 78, 50);
+        ctx.arc(130, 80, 70, Math.PI, 0, false);
+        ctx.quadraticCurveTo(200, 120, 160, 170);
+        ctx.closePath();
+        ctx.fill();
+      }
+      drawBalloon();
+
+    //   ctx.save();
+      ctx.translate(100, 500);
+    //   ctx.restore();
+    </script>
+  </body>
+</html>
