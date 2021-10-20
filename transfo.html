@@ -18,8 +18,8 @@
 <div class="box"></div>
 
 <script>
-    let box = document.querySelector('.box');
 
+    let box = document.querySelector('.box');
     box.addEventListener('mouseover', funBox);
     let count = 1;
 
@@ -30,28 +30,23 @@
         return 'rgb(' + r + ',' + g + ',' + b + ')';
     }
 
-    function ranRadius() {
-        return Math.random() * 400 + 'px';
-    }
-
-    function ranWh() {
+    function ranNum() {
         return Math.random() * 400 + 'px';
     }
 
     function funBox() {
         if (count) {
-            this.style.width = ranWh();
-            this.style.height = ranWh();
+            this.style.width = ranNum();
+            this.style.height = ranNum();
             this.style.backgroundColor = ranRgb();
-            this.style.borderRadius = ranRadius();
-
+            this.style.borderRadius = ranNum();
             count = 0;
         } else {
-            this.style.width = ranWh();
-            this.style.height = ranWh();
+            this.style.width = ranNum();
+            this.style.height = ranNum();
             this.style.backgroundColor = ranRgb();
-            this.style.borderRadius = 'ranRadius() ranRadius()';
-            count = 1;
+            this.style.borderRadius = ranNum();
+            count = 1
         }
     }
 </script>
