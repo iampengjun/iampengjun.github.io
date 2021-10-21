@@ -11,8 +11,8 @@ function rgbNum() {
   return "rgb(" + rNum + "," + gNum + "," + bNum + ")";
 }
 
-let x = Math.random() * 30,
-  y = Math.random() * 40,
+let x = Math.random() * 500,
+  y = Math.random() * 500,
   r;
 xSpeed = Math.random() * 50;
 ySpeed = Math.random() * 70;
@@ -28,8 +28,16 @@ function drawCircle(x, y, r) {
 setInterval(function () {
   x += xSpeed;
   y += ySpeed;
-  c.clearRect(0, 0, innerWidth, innerHeight);
-  drawCircle(x, y, r);
+
+  onmouseover = function () {
+    drawCircle(x, y, r);
+  };
+
+  onmousedown = function () {
+    c.clearRect(0, 0, innerWidth, innerHeight);
+    drawCircle(x, y, r);
+  };
+
   if (x > innerWidth || x < 0) {
     xSpeed = -xSpeed;
   }
