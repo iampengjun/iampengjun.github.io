@@ -1,0 +1,79 @@
+body {
+  background-color: rgba(105, 143, 187, 0.2);
+  animation: bgcChange 45s infinite alternate-reverse;
+}
+a {
+  display: block;
+  padding: 10px;
+  font-size: 25px;
+  text-decoration: none;
+  color: rgba(48, 51, 107, 0.7);
+  background-color: #fff;
+  font-weight: 700;
+  width: 100px;
+  text-align: center;
+  animation: bigger 10s infinite alternate-reverse;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin: 50px 0 0 50px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content div {
+  font-size: 20px;
+  width: 100px;
+  margin: 10px 0 0 0;
+  background-color: pink;
+  text-align: center;
+  animation: feel 4s infinite alternate-reverse;
+}
+
+@keyframes bgcChange {
+  15% {
+    background-color: rgba(246, 229, 141, 0.5);
+  }
+  30% {
+    background-color: rgba(255, 190, 118, 0.5);
+  }
+  45% {
+    background-color: rgba(255, 121, 121, 0.5);
+  }
+  60% {
+    background-color: rgba(126, 214, 223, 0.5);
+  }
+  75% {
+    background-color: rgba(224, 86, 253, 0.5);
+  }
+  90% {
+    background-color: rgba(199, 236, 238, 0.5);
+  }
+}
+
+@keyframes bigger {
+  from {
+    background-color: rgba(34, 166, 179, 0.5);
+  }
+  to {
+    background-color: rgba(246, 229, 141, 0.5);
+  }
+}
+
+@keyframes feel {
+  from {
+    background-color: rgba(255, 190, 118, 0.5);
+  }
+  to {
+    background-color: rgba(104, 109, 224, 0.5);
+  }
+}
