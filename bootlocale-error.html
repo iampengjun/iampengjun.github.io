@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body{
+        background-color: rgba(63, 64, 49,.5);
+      }
+      .alpha,.belta {
+        margin: 50px;
+        width: 0;
+        height: 0;
+        background-color: pink;
+        position: relative;
+        font-size: 40px;
+        padding: 40px;
+        animation: move 15s alternate-reverse;
+        overflow: hidden;
+        opacity: 0;
+      }
+      .belta {
+        width: 500px;
+        height: 400px;
+        background-color: yellow;
+        opacity: 0;
+        animation: appear 30s 15s;
+      }
+      @keyframes move {
+        0% {
+          top: 0;
+          left: 0;
+          background: red;
+          width: 0;
+          height: 0;
+          opacity: 0;
+        }
+        50% {
+          top: 0;
+          left: 0;
+          background: yellow;
+          width: 500px;
+          height: 420px;
+          opacity: 1;
+        }
+      }
+      @keyframes appear {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="alpha">
+      如何解决:<br /><br />
+      raise ImportError("No module named " + target_package_name)<br /><br />
+      ImportError: No module named _bootlocale
+    </div>
+    <div class="belta">
+      一、下载旧版本python文件<br /><br />
+      二、安装后，在安装目录文件夹<b>Lib</b>里找到<b>_bootlocale</b>文件<br />
+      三、copy到当前版本的python安装目录的<b>Lib</b>文件夹里就OK了
+    </div>
+  </body>
+</html>
