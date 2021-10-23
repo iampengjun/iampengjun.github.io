@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fighter</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            background-image: url('bg.jpg');
+            width: 100vw;
+            height: 100vw;
+            background-size: cover;
+            background-position: bottom right;
+            position: relative;
+        }
+        .group{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        .group button{
+            padding: 6px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <div class="group">
+        <button type="button" class="play">开始</button>
+        <button type="button" class="stop">暂停</button>
+    </div>
+
+    <script src="runMan.js"></script>
+</body>
+</html>
