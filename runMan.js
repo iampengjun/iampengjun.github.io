@@ -19,7 +19,7 @@ class RunMan {
     this.speed = 5;
 
     let img = new Image();
-    img.src = "guy.png";
+    img.src = "https://untamed.wild-refuge.net/images/rpgxp/wedding/weddingguy02.png";
 
     img.onload = () => {
       c.drawImage(
