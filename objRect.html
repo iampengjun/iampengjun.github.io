@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="objRect.js"></script>
+    <style>
+      body {
+        background: rgba(100, 114, 149, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="700" height="700"></canvas>;
+    <script>
+      let canvas = document.querySelector("canvas");
+      let ctx = canvas.getContext("2d");
+
+      setInterval(function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < 10; i++) {
+          let r = Math.random() * 255;
+          let g = Math.random() * 255;
+          let b = Math.random() * 255;
+          let rgb = "rgb(" + r + "," + g + "," + b + ")";
+          let rect = new drawRect({
+            x: Math.random() * innerWidth,
+            y: Math.random() * innerHeight,
+            w: 200,
+            h: 200,
+            opacity: Math.random(),
+            rotation: Math.random() * 360,
+            scaleX: Math.random(),
+            scaleY: Math.random(),
+            fillStyle: rgb,
+            strokeStyle: rgb,
+          });
+          rect.render(ctx);
+        }
+      }, 150);
+    </script>
+  </body>
+</html>
