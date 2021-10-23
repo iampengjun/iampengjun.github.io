@@ -6,48 +6,88 @@ canvas.width = document.documentElement.clientWidth;
 canvas.height = document.documentElement.clientHeight;
 
 class RunMan {
-    constructor() {
-        this.flag = false;
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+  constructor() {
+    this.flag = false;
+    this.sx = 0;
+    this.sy = 0;
+    this.sw = 32;
+    this.sh = 48;
+    this.dx = 200;
+    this.dy = 200;
+    this.dw = 32 * 2;
+    this.dh = 48 * 2;
+    this.speed = 5;
 
-        this.dx = Math.round(Math.random() * 10) - 5;
-        this.dy = Math.round(Math.random() * 10) - 5;
+    let img = new Image();
+    img.src = "guy.png";
 
-        let img = new Image();
-        img.src = "guy.png";
+    img.onload = () => {
+      c.drawImage(
+        img,
+        this.sx,
+        this.sy,
+        this.sw,
+        this.sh,
+        this.dx,
+        this.dy,
+        this.dw,
+        this.dh
+      );
 
-        img.onload = () => {
-            c.drawImage(img, this.x, this.y, img.width, img.height);
-        };
-        this.img = img;
+      this.img = img;
+    };
+  }
+  update(dir) {
+    if (dir == "turn") {
+      this.sy += 48;
+      if (this.sy == 4 * 48) {
+        this.sy %= 48 * 4;
+      }
     }
-    update(dir) {
-        switch (dir) {
-            case "left":
-                this.x -= 3;
-                break;
-            case "right":
-                this.x += 3;
-                break;
-            case "up":
-                this.y -= 3;
-                break;
-            case "down":
-                this.y += 3;
-                break;
-            default:
-                this.x += this.dx;
-                this.y += this.dy;
-                break;
-        }
+    if (dir == "left") {
+      this.sx += 32;
+      this.dx -= this.speed;
+      if (this.sx == 4 * 32) {
+        this.sx %= 32 * 4;
+      }
     }
-    render() {
-        c.clearRect(0, 0, canvas.width, canvas.height);
-        c.drawImage(this.img, this.x, this.y, this.img.width, this.img.height);
+    if (dir == "up") {
+      this.sx += 32;
+      this.dy -= this.speed;
+      if (this.sx == 4 * 32) {
+        this.sx %= 32 * 4;
+      }
     }
+    if (dir == "down") {
+      this.sx += 32;
+      this.dy += this.speed;
+      if (this.sx == 4 * 32) {
+        this.sx %= 32 * 4;
+      }
+    }
+    if (dir == "right") {
+      this.sx += 32;
+      this.dx += this.speed;
+      if (this.sx == 4 * 32) {
+        this.sx %= 32 * 4;
+      }
+    }
+  }
+  render() {
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    c.drawImage(
+      this.img,
+      this.sx,
+      this.sy,
+      this.sw,
+      this.sh,
+      this.dx,
+      this.dy,
+      this.dw,
+      this.dh
+    );
+  }
 }
-
 
 let man1 = new RunMan();
 
@@ -62,7 +102,7 @@ document.querySelector(".group").addEventListener("click", function (ev) {
       timer = setInterval(function () {
         man1.update();
         man1.render();
-      }, 150);
+      }, 100);
       break;
     case "stop":
       this.flag = false;
@@ -75,23 +115,23 @@ document.addEventListener("keyup", grabEvent);
 
 function grabEvent(ev) {
   let keycode = ev.keyCode;
+  console.log(keycode);
 
   switch (keycode) {
+    case 32:
+      man1.update("turn");
+      break;
     case 37:
       man1.update("left");
-      document.querySelector(".stop").click();
       break;
     case 38:
       man1.update("up");
-      document.querySelector(".stop").click();
       break;
     case 39:
       man1.update("right");
-      document.querySelector(".stop").click();
       break;
     case 40:
       man1.update("down");
-      document.querySelector(".stop").click();
   }
 
   man1.render();
