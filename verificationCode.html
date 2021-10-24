@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>verifacationCode</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: url("https://cdn.pixabay.com/photo/2021/10/02/18/49/square-6676128_960_720.jpg") no-repeat;
+        background-size: cover;
+        background-position: center 0 ;
+      }
+      canvas {
+        margin-top: 70px;
+        margin-left: 100px;
+        border: 2px solid gray;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="200" height="70"></canvas>
+
+    <script">
+
+let canvas = document.querySelector("canvas");
+let ctx = canvas.getContext("2d");
+
+canvas.onclick = function () {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  draw();
+};
+
+function ranColor() {
+  let r = Math.random() * 255;
+  let g = Math.random() * 255;
+  let b = Math.random() * 255;
+  return "rgb(" + r + "," + g + "," + b + ")";
+}
+
+function draw() {
+  ctx.strokeStyle = ranColor();
+
+  for (let i = 0; i < 10; i++) {
+    ctx.beginPath();
+    ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+    ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+    ctx.strokeStyle = ranColor();
+    ctx.stroke();
+  }
+  for (let j = 0; j < 20; j++) {
+    ctx.beginPath();
+    let x = Math.random() * 200;
+    let y = Math.random() * 70;
+    ctx.arc(x, y, 1, 0, Math.PI * 2, true);
+    ctx.fillStyle = ranColor();
+    ctx.fill();
+  }
+  
+  let arr = [];
+  for (let n = 0; n < 4; n++) {
+    num = Math.ceil(Math.random() * 9);
+    arr.push(num);
+  }
+  for (let index = 0; index < 4; index++) {
+    ctx.save();
+
+    let x = 10 + index * 20;
+    let y = Math.random() * 20 + 20;
+
+    ctx.translate(x, y);
+
+    num = Math.ceil(Math.random() * 9);
+    ctx.strokeStyle = ranColor();
+    ctx.font = " italic 50px 'Microsoft Yahei'";
+    ctx.strokeText(num, x, y);
+
+    ctx.restore();
+  }
+}
+
+draw();
+
+    </script>
+  </body>
+</html>
